@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/singer/layout::head">
+    <meta charset="UTF-8">
+    <title>Create New Singer!!!</title>
+</head>
+<body>
+<h1>Create New Singer</h1>
+<p><a href="/singers">Singer List</a></p>
+<div th:if="${message}" th:text="${message}"></div>
+
+<form th:action="@{/singers/create}" th:object="${singer}" method="post" enctype="multipart/form-data">
+    <table id="singers">
+        <tr>
+            <td>Singer Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+
+        <tr>
+            <td>Description:</td>
+<!--            <td><input type="text" th:field="*{description}"/></td>-->
+            <td><textarea cols="50" rows="5" th:type="text" th:field="*{description}" ></textarea></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create Singer"></td>
+        </tr>
+    </table>
+</form>
+<footer th:replace="/singer/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/album/layout::head">
+    <meta charset="UTF-8">
+    <title>Create New Album!!!</title>
+</head>
+<body>
+<h1>Create New Album</h1>
+<p><a href="/albums">Album List</a></p>
+<div th:if="${message}" th:text="${message}"></div>
+
+<form th:action="@{/albums/create}" th:object="${album}" method="post" enctype="multipart/form-data">
+    <table id="albums">
+        <tr>
+            <td>Album Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+
+        <tr>
+            <td>Description:</td>
+
+            <td><textarea cols="50" rows="5" th:type="text" th:field="*{description}" ></textarea></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="file" th:field="*{image}"></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create Album"></td>
+        </tr>
+    </table>
+</form>
+<footer th:replace="/album/layout :: footer"></footer>
+</body>
+</html>
